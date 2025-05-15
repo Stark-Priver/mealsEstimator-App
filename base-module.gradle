@@ -1,0 +1,115 @@
+dependencies {
+    implementation(libs.androidx.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.junit.ext)
+    androidTestImplementation(libs.espresso.core)
+
+    // Coroutines
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
+
+    // Coroutine Lifecycle Scopes
+    implementation(libs.viewmodel.ktx)
+
+    // Timber
+    implementation(libs.timber)
+
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
+
+    // Dagger - Hilt
+    implementation(libs.dagger.hilt.android)
+    ksp(libs.dagger.hilt.android.compiler)
+    ksp(libs.hilt.compiler)
+
+    // UI
+    implementation(libs.activity.compose)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.tooling.preview)
+    androidTestImplementation(libs.compose.ui.test.junit4)
+    debugImplementation(libs.compose.ui.tooling)
+    implementation(libs.compose.test.manifest)
+    implementation(libs.lifecycle.viewmodel.compose)
+    implementation(libs.compose.hilt.navigation)
+
+    // Coil
+    implementation(libs.coil.compose)
+
+    // Paging Compose
+    implementation(libs.compose.paging)
+
+    // Livedata
+    implementation(libs.compose.livedata)
+
+    // collapsing Toolbar
+    implementation(libs.toolbar.compose)
+
+    // Compose livedata
+    implementation(libs.compose.livedata)
+
+    // Searchable Dropdown
+    implementation(libs.searchable.dropdown)
+
+    // Swipe to refresh
+    implementation(libs.accompanist.swiperefresh)
+
+    // Pager
+    implementation(libs.accompanist.pager)
+    implementation(libs.accompanist.pager.indicators)
+
+    // Leak Canary
+    debugImplementation(libs.leakcanary.android)
+
+    // Truth library
+    testImplementation(libs.truth)
+    androidTestImplementation(libs.truth)
+
+    androidTestImplementation(libs.arch.core.testing)
+
+    // Material 3
+    implementation(libs.compose.material3)
+
+    // Gson
+    implementation(libs.retrofit.converter.gson)
+
+    // Lottie
+    api(libs.lottie.compose)
+
+    // Compose Paging
+    implementation(libs.paging.runtime)
+
+    // Compose Image Cropper
+    implementation(libs.easycrop)
+
+    // Firebase
+    implementation(platform(libs.firebase.bom))
+
+    // Firebase Storage
+    implementation(libs.firebase.storage.ktx)
+
+    // Firebase Coroutine
+    implementation(libs.coroutines.play.services)
+
+    // Firebase Auth
+    implementation(libs.firebase.auth.ktx)
+
+    // Firebase Database
+    implementation(libs.firebase.database.ktx)
+
+    // In app updates
+    implementation(libs.play.app.update)
+    implementation(libs.play.app.update.ktx)
+
+    // In app review
+    implementation(libs.play.review)
+    implementation(libs.play.review.ktx)
+
+    // Material Extended Icons
+    implementation(libs.compose.material.icons.extended)
+
+    // Konsist
+    testImplementation(libs.konsist)
+
+    // Kotlinx DateTime
+    implementation(libs.kotlinx.datetime)
+}

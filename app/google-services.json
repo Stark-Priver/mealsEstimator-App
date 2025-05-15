@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "814147499519",
+    "project_id": "mealsapp-473fe",
+    "storage_bucket": "mealsapp-473fe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814147499519:android:93beb602387d4a8a82a3ca",
+        "android_client_info": {
+          "package_name": "com.kanyideveloper.mealtime"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCE2UeXahMxWp7N4W3gQWdsqxEQ24T0H-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
