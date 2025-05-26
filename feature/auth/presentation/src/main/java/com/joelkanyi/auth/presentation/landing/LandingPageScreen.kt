@@ -1,26 +1,12 @@
-/*
- * Copyright 2023 Joel Kanyi.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
 package com.joelkanyi.auth.presentation.landing
 
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.ui.text.withStyle
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -30,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -40,29 +27,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.joelkanyi.auth.presentation.AuthNavigator
-import com.joelkanyi.auth.presentation.BuildConfig
 import com.ramcosta.composedestinations.annotation.Destination
-import com.stevdzasan.onetap.OneTapSignInWithGoogle
-import com.stevdzasan.onetap.rememberOneTapSignInState
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import org.json.JSONObject
 
 @Destination
 @Composable
@@ -70,35 +44,6 @@ fun LandingPageScreen(
     navigator: AuthNavigator,
     viewModel: LandingPageViewModel = hiltViewModel(),
 ) {
-    val auth = Firebase.auth
-    val context = LocalContext.current
-
-    val oneTapSignInState = rememberOneTapSignInState()
-    OneTapSignInWithGoogle(
-        state = oneTapSignInState,
-        clientId = BuildConfig.GOOGLE_CLIENT_ID,
-        onTokenIdReceived = { tokenId ->
-            val firebaseCredential = GoogleAuthProvider.getCredential(tokenId, null)
-            CoroutineScope(Dispatchers.Main).launch {
-                val result = auth.signInWithCredential(firebaseCredential).await()
-                if (result.user != null) {
-                    viewModel.signInWithGoogle(tokenId)
-                    viewModel.setUserProfile(
-                        userId = result.user?.uid ?: "",
-                        userProperties = JSONObject()
-                            .put("name", "${result?.user?.displayName}")
-                            .put("email", "${result?.user?.email}")
-
-                    )
-                    navigator.switchNavGraphRoot()
-                }
-            }
-        },
-        onDialogDismissed = { message ->
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-        }
-    )
-
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             modifier = Modifier
@@ -116,33 +61,37 @@ fun LandingPageScreen(
                     Alignment.BottomCenter
                 )
         ) {
+            // Continue without sign in button
             Button(
                 modifier = Modifier
                     .fillMaxWidth(),
                 onClick = {
-                    viewModel.trackUserEvent("Google Sign In Clicked")
-                    oneTapSignInState.open()
+                    viewModel.trackUserEvent("Continue Without Sign In Clicked")
+                    navigator.switchNavGraphRoot()
                 },
-                enabled = !oneTapSignInState.opened,
                 shape = RoundedCornerShape(50),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.White,
-                    disabledContainerColor = Color.LightGray
+                    containerColor = Color.White
                 )
             ) {
-                Image(
+                Row(
                     modifier = Modifier.padding(6.dp),
-                    painter = painterResource(id = com.joelkanyi.common.R.drawable.ic_google),
-                    contentDescription = "Google Icon"
-                )
-
-                Text(
-                    text = "Sign In with Google",
-                    style = TextStyle(
-                        color = Color.Black,
-                        fontSize = 14.sp
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Home,
+                        contentDescription = "Continue Icon",
+                        tint = Color.Black
                     )
-                )
+
+                    Text(
+                        text = "Continue Without Sign In",
+                        style = TextStyle(
+                            color = Color.Black,
+                            fontSize = 14.sp
+                        )
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -151,7 +100,7 @@ fun LandingPageScreen(
                 modifier = Modifier
                     .fillMaxWidth(),
                 onClick = {
-                    viewModel.trackUserEvent("Email Sign In Clicked")
+                    viewModel.trackUserEvent("Email Sign Up Clicked")
                     navigator.openSignUp()
                 },
                 shape = RoundedCornerShape(50),
