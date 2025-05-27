@@ -41,6 +41,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.joelkanyi.auth.presentation.AuthNavigator
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.stevdzasan.onetap.OneTapSignInWithGoogle
 import com.stevdzasan.onetap.rememberOneTapSignInState
 import kotlinx.coroutines.CoroutineScope
@@ -49,7 +50,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import org.json.JSONObject
 
-@Destination
+
+@Destination(start = true )
 @Composable
 fun LandingPageScreen(
     navigator: AuthNavigator,
@@ -59,7 +61,7 @@ fun LandingPageScreen(
     val context = LocalContext.current
 
     // Your Google OAuth client ID
-    val googleClientId = "290764482223-q8kesbfvs85hge467ch1mt3ec7ge5m7k.apps.googleusercontent.com"
+    val googleClientId = "953600714967-l75d5lq2bilkk8hsebbqc6trb8qjg5aq.apps.googleusercontent.com"
 
     val oneTapSignInState = rememberOneTapSignInState()
     OneTapSignInWithGoogle(
