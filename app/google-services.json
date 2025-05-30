@@ -1,26 +1,45 @@
 {
   "project_info": {
-    "project_number": "814147499519",
-    "project_id": "mealsapp-473fe",
-    "storage_bucket": "mealsapp-473fe.firebasestorage.app"
+    "project_number": "521724673929",
+    "firebase_url": "https://mealtime-9eeb6-default-rtdb.firebaseio.com",
+    "project_id": "mealtime-9eeb6",
+    "storage_bucket": "mealtime-9eeb6.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:814147499519:android:93beb602387d4a8a82a3ca",
+        "mobilesdk_app_id": "1:521724673929:android:caf9202dde10fe1597eb58",
         "android_client_info": {
           "package_name": "com.kanyideveloper.mealtime"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "521724673929-r33ukd2n619i8pvjp5f4f0gt59c67bmf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kanyideveloper.mealtime",
+            "certificate_hash": "5067683ae8a3ce5f603eb678688294147d8be20f"
+          }
+        },
+        {
+          "client_id": "521724673929-m3ve8o1m5dc85i2akjk9jeujktb0899p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyCE2UeXahMxWp7N4W3gQWdsqxEQ24T0H-8"
+          "current_key": "AIzaSyCo8ZcWJbHRthRNcVRXCQUMslQCPJCCk14"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "521724673929-m3ve8o1m5dc85i2akjk9jeujktb0899p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

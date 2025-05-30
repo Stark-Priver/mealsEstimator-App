@@ -61,7 +61,7 @@ fun LandingPageScreen(
     val context = LocalContext.current
 
     // Your Google OAuth client ID
-    val googleClientId = "953600714967-l75d5lq2bilkk8hsebbqc6trb8qjg5aq.apps.googleusercontent.com"
+    val googleClientId = "521724673929-m3ve8o1m5dc85i2akjk9jeujktb0899p.apps.googleusercontent.com"
 
     val oneTapSignInState = rememberOneTapSignInState()
     OneTapSignInWithGoogle(
